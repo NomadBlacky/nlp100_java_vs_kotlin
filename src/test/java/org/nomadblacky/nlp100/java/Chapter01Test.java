@@ -166,12 +166,13 @@ public class Chapter01Test {
 
         List<List<String>> wordBiGram =
                 wordNGram(Arrays.asList(source.split("\\s+")), 2);
-
-        assertThat(wordBiGram, contains(
+        List<List<String>> expect = Arrays.asList(
                 Arrays.asList("I", "am"),
                 Arrays.asList("am", "an"),
                 Arrays.asList("an", "NLPer")
-        ));
+        );
+
+        assertThat(wordBiGram, is(expect));
     }
 
     private List<List<String>> wordNGram(List<String> words, int n) {
