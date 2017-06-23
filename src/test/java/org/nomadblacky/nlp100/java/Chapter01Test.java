@@ -251,13 +251,7 @@ public class Chapter01Test {
             chars.add(c);
         }
         return chars.stream()
-                .map(c -> {
-                    if ('a' <= c && c <= 'z') {
-                        return (char) (219 - c);
-                    } else {
-                        return c;
-                    }
-                })
+                .map(c -> 'a' <= c && c <= 'z' ? (char) (219 - c) : c)
                 .map(c -> c.toString())
                 .collect(Collectors.joining())
                 ;
@@ -278,20 +272,18 @@ public class Chapter01Test {
 
         String result =
                 Stream.of(str.split("\\s+"))
-                .map(s -> {
-                    if (5 <= s.length()) {
-                        String first = s.substring(0, 1);
-                        String last  = s.substring(s.length() - 1, s.length());
-                        List<Character> middleChars = getCharacterList(s.substring(1, s.length() - 1));
-                        Collections.shuffle(middleChars, random);
-                        String middle = middleChars.stream().map(c -> c.toString()).collect(Collectors.joining());
-                        return first + middle + last;
-                    } else {
-                        return s;
-                    }
-                })
+                .map(s -> 5 <= s.length() ? shuffleMiddle(s, random) : s)
                 .collect(Collectors.joining(" "))
                 ;
         assertThat(result, is("Sclaa is ocbjet oeetrnid , fciotnnaul , and scaballe pngamimrrog lnauagge ."));
+    }
+
+    private String shuffleMiddle(String s, Random random) {
+        String first = s.substring(0, 1);
+        String last  = s.substring(s.length() - 1, s.length());
+        List<Character> middleChars = getCharacterList(s.substring(1, s.length() - 1));
+        Collections.shuffle(middleChars, random);
+        String middle = middleChars.stream().map(c -> c.toString()).collect(Collectors.joining());
+        return first + middle + last;
     }
 }
