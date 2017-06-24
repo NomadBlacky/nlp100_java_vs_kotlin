@@ -26,26 +26,8 @@ public class Chapter01Test {
      */
     @Test
     public void q00() throws Exception {
-        String str = "stressed";
-        List<Character> list = new ArrayList<>();
-        for (char c : str.toCharArray()) {
-            list.add(c);
-        }
-        Collections.reverse(list);
-        String result =
-                list.stream()
-                .map(c -> c.toString())
-                .collect(Collectors.joining());
-
-        assertThat(result, is("desserts"));
-    }
-
-    private List<Character> getCharacterList(String str) {
-        List<Character> list = new ArrayList<>();
-        for (char c : str.toCharArray()) {
-            list.add(c);
-        }
-        return list;
+        StringBuilder sb = new StringBuilder("stressed");
+        assertThat(sb.reverse().toString(), is("desserts"));
     }
 
     /**
@@ -285,5 +267,13 @@ public class Chapter01Test {
         Collections.shuffle(middleChars, random);
         String middle = middleChars.stream().map(c -> c.toString()).collect(Collectors.joining());
         return first + middle + last;
+    }
+
+    private List<Character> getCharacterList(String str) {
+        List<Character> list = new ArrayList<>();
+        for (char c : str.toCharArray()) {
+            list.add(c);
+        }
+        return list;
     }
 }
