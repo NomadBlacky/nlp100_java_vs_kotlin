@@ -4,8 +4,6 @@ import org.hamcrest.Matchers.*
 import org.junit.Assert.*
 import org.junit.Test
 import java.util.*
-import java.util.stream.Collectors
-import java.util.stream.Stream
 
 /**
  * 自然言語処理100本ノック
@@ -32,8 +30,11 @@ class Chapter01Test {
     @Test
     @Throws(Exception::class)
     fun q01() {
-        val str = "パタトクカシーー".filterIndexed { index, _ -> index % 2 == 0 }
-        assertThat(str, `is`("パトカー"))
+        val str = "パタトクカシーー"
+        val result =
+                listOf(str.get(0), str.get(2), str.get(4), str.get(6))
+                .joinToString(separator = "")
+        assertThat(result, `is`("パトカー"))
     }
 
     /**
@@ -45,7 +46,10 @@ class Chapter01Test {
     fun q02() {
         val s1 = "パトカー"
         val s2 = "タクシー"
-        val result = s1.zip(s2, {a,b -> a.toString() + b.toString()}).joinToString(separator = "") { s -> s }
+        val result =
+                s1.zip(s2) { a, b ->
+                    a.toString() + b.toString()
+                }.joinToString(separator = "")
 
         assertThat(result, `is`("パタトクカシーー"))
     }
