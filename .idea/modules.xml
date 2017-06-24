@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/nlp100_java_vs_kotlin.iml" filepath="$PROJECT_DIR$/nlp100_java_vs_kotlin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nlp100_java_vs_kotlin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/nlp100_java_vs_kotlin_main.iml" group="nlp100_java_vs_kotlin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nlp100_java_vs_kotlin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/nlp100_java_vs_kotlin_test.iml" group="nlp100_java_vs_kotlin" />
     </modules>
   </component>
 </project>
