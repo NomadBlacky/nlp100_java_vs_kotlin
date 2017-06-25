@@ -82,7 +82,7 @@ class Chapter01Test {
     @Throws(Exception::class)
     fun q04() {
         val text = "Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can."
-        val extractOne = listOf(0, 4, 5, 6, 7, 8, 14, 17, 18)
+        val extractOne = listOf(0, 4, 5, 6, 7, 8, 14, 15, 18)
         val result = text.split("""\s+""".toRegex())
                 .mapIndexed { i, s ->
                     if (extractOne.contains(i)) i + 1 to s.take(1) else i + 1 to s.take(2)
