@@ -64,8 +64,10 @@ class Chapter01Test {
     @Throws(Exception::class)
     fun q03() {
         val str = "Now I need a drink, alcoholic of course, after the heavy lectures involving quantum mechanics."
-        val result = str.split("""\s+""".toRegex()).map { it.replace("""\W+""".toRegex(), "") }.map(String::length)
-        println(result)
+        val result = str.split("""\s+""".toRegex())
+                .map { it.replace("""\W+""".toRegex(), "") }
+                .map(String::length)
+
         assertThat(result, contains(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7, 9))
     }
 
@@ -80,10 +82,11 @@ class Chapter01Test {
     @Throws(Exception::class)
     fun q04() {
         val text = "Hi He Lied Because Boron Could Not Oxidize Fluorine. New Nations Might Also Sign Peace Security Clause. Arthur King Can."
-        val extractOne = listOf(1, 5, 6, 7, 8, 9, 15, 16, 19).map { it - 1 }
-        val result = text.split("""\s+""".toRegex()).mapIndexed { i, s ->
-            if (extractOne.contains(i)) i + 1 to s.take(1) else i + 1 to s.take(2)
-        }.toMap()
+        val extractOne = listOf(0, 4, 5, 6, 7, 8, 14, 17, 18)
+        val result = text.split("""\s+""".toRegex())
+                .mapIndexed { i, s ->
+                    if (extractOne.contains(i)) i + 1 to s.take(1) else i + 1 to s.take(2)
+                }.toMap()
 
         val expect: Map<Int, String> = linkedMapOf(
                  1 to "H" ,
